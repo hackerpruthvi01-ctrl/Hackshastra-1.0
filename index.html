@@ -1,0 +1,2018 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+    <b:include data='blog' name='all-head-content'/>
+    
+    <title>Hackshastra 1.0 | 10-Day Ethical Hacking Course</title>
+    
+    <meta charset='utf-8'/>
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+    <meta content='Hackshastra 1.0, ethical hacking course, cybersecurity training, 10-day hacking course, Android hacking, Termux' name='keywords'/>
+    <meta content='Hackshastra 1.0 - Learn ethical hacking in 10 days using Android phone. Complete hands-on course with Termux, Nmap, Zphisher, Hydra tools. Free certification included.' name='description'/>
+    
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500;700&family=Share+Tech+Mono&display=swap' rel='stylesheet'>
+    
+    <!-- Font Awesome -->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'>
+    
+    <style type='text/css'>
+        /* ===== BASE STYLES ===== */
+        :root {
+            --hack-blue: #0a192f;
+            --cyber-green: #00ff88;
+            --matrix-green: #00ff41;
+            --neon-purple: #bc13fe;
+            --terminal-gray: #0f1419;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+            --dark: #020c1b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--hack-blue);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Cyberpunk Glow Date Box */
+.date-glow-box {
+    background: rgba(10, 25, 47, 0.8);
+    border: 2px solid var(--matrix-green);
+    border-radius: 15px;
+    padding: 25px 35px;
+    text-align: center;
+    margin: 40px auto;
+    max-width: 400px;
+    position: relative;
+    box-shadow: 
+        0 0 20px rgba(0, 255, 136, 0.3),
+        inset 0 0 20px rgba(0, 255, 136, 0.1);
+    overflow: hidden;
+}
+
+.date-glow-box::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+        var(--cyber-green), 
+        var(--neon-purple), 
+        var(--cyber-green), 
+        var(--neon-purple));
+    border-radius: 17px;
+    z-index: -1;
+    animation: borderRotate 4s linear infinite;
+    background-size: 400% 400%;
+}
+
+@keyframes borderRotate {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.date-glow-label {
+    color: #aaa;
+    font-size: 0.9rem;
+    font-family: 'Share Tech Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.date-glow-main {
+    color: var(--cyber-green);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 15px 0;
+    text-shadow: 0 0 15px rgba(0, 255, 136, 0.7);
+}
+
+.date-glow-sub {
+    color: var(--neon-purple);
+    font-size: 0.9rem;
+    font-family: 'Share Tech Mono', monospace;
+    margin-top: 10px;
+}
+}
+        
+        /* ===== TYPOGRAPHY ===== */
+        h1, h2, h3, h4 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+        }
+        
+        .terminal-font {
+            font-family: 'Share Tech Mono', monospace;
+        }
+        
+        /* ===== GLOW EFFECTS ===== */
+        .glow {
+            text-shadow: 0 0 10px var(--cyber-green),
+                       0 0 20px var(--cyber-green),
+                       0 0 30px var(--cyber-green);
+        }
+        
+        .glow-purple {
+            text-shadow: 0 0 10px var(--neon-purple),
+                       0 0 20px var(--neon-purple);
+        }
+        
+        /* ===== COMPACT HEADER WITH ALWAYS VISIBLE NAME ===== */
+        header {
+            background: linear-gradient(135deg, var(--hack-blue) 0%, #020c1b 100%);
+            padding: 15px 0;
+            border-bottom: 2px solid var(--matrix-green);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.1);
+        }
+        
+        .header-compact {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo-compact {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 1001;
+        }
+        
+        .logo-icon {
+            color: var(--matrix-green);
+            font-size: 1.8rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .logo-text-compact h1 {
+            font-size: 1.4rem;
+            background: linear-gradient(45deg, var(--cyber-green), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+            white-space: nowrap;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+        
+        .logo-text-compact .tagline {
+            color: var(--cyber-green);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            display: block;
+            margin-top: -2px;
+        }
+        
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            background: transparent;
+            border: 2px solid var(--matrix-green);
+            color: var(--matrix-green);
+            width: 44px;
+            height: 44px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1001;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-toggle:hover {
+            background: rgba(0, 255, 136, 0.1);
+            transform: rotate(90deg);
+        }
+        
+        /* Compact Navigation */
+        .main-nav-compact {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: rgba(10, 25, 47, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.4s ease;
+            border-left: 2px solid var(--matrix-green);
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+            padding: 80px 20px 20px;
+            overflow-y: auto;
+        }
+        
+        .main-nav-compact.active {
+            right: 0;
+        }
+        
+        .nav-scroll-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 20px;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+        }
+        
+        .nav-item:hover {
+            background: rgba(0, 255, 136, 0.1);
+            border-color: var(--cyber-green);
+            transform: translateX(5px);
+        }
+        
+        .nav-item i {
+            width: 20px;
+            text-align: center;
+            color: var(--cyber-green);
+        }
+        
+        .nav-cta-compact {
+            background: linear-gradient(45deg, var(--cyber-green), var(--matrix-green));
+            color: var(--hack-blue) !important;
+            font-weight: 700;
+            border: none;
+            margin-top: 10px;
+        }
+        
+        .nav-cta-compact i {
+            color: var(--hack-blue) !important;
+        }
+        
+        .nav-cta-compact:hover {
+            background: linear-gradient(45deg, var(--matrix-green), var(--cyber-green));
+            transform: translateX(5px) scale(1.05);
+        }
+        
+        /* Desktop Horizontal Navigation */
+        @media (min-width: 992px) {
+            .menu-toggle {
+                display: none;
+            }
+            
+            .main-nav-compact {
+                position: static;
+                width: auto;
+                height: auto;
+                background: transparent;
+                backdrop-filter: none;
+                border: none;
+                box-shadow: none;
+                padding: 0;
+                overflow: visible;
+            }
+            
+            .nav-scroll-container {
+                flex-direction: row;
+                gap: 5px;
+            }
+            
+            .nav-item {
+                padding: 8px 15px;
+                font-size: 0.8rem;
+                white-space: nowrap;
+            }
+            
+            .nav-item span {
+                display: inline;
+            }
+            
+            .nav-item i {
+                margin-right: 5px;
+            }
+            
+            .nav-item:hover {
+                transform: translateY(-2px);
+            }
+            
+            .nav-cta-compact:hover {
+                transform: translateY(-2px) scale(1.05);
+            }
+        }
+        
+        /* Small Desktop / Tablet */
+        @media (max-width: 991px) {
+            .nav-item span {
+                display: inline;
+            }
+            
+            .logo-text-compact h1 {
+                font-size: 1.2rem;
+            }
+            
+            .logo-text-compact .tagline {
+                font-size: 0.65rem;
+            }
+        }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-item span {
+                display: inline;
+            }
+            
+            .logo-text-compact h1 {
+                font-size: 1.1rem;
+            }
+            
+            .logo-text-compact .tagline {
+                font-size: 0.6rem;
+            }
+            
+            .logo-compact {
+                gap: 8px;
+            }
+        }
+        
+        /* Small Mobile - Keep name visible but adjust size */
+        @media (max-width: 480px) {
+            .logo-text-compact h1 {
+                font-size: 1rem;
+            }
+            
+            .logo-text-compact .tagline {
+                font-size: 0.55rem;
+            }
+            
+            .logo-compact {
+                gap: 6px;
+            }
+            
+            .logo-icon {
+                font-size: 1.5rem;
+            }
+            
+            .nav-item span {
+                display: inline;
+            }
+            
+            .main-nav-compact {
+                width: 100%;
+            }
+        }
+        
+        /* Extra Small Mobile */
+        @media (max-width: 360px) {
+            .logo-text-compact h1 {
+                font-size: 0.9rem;
+            }
+            
+            .logo-text-compact .tagline {
+                font-size: 0.5rem;
+            }
+            
+            .logo-icon {
+                font-size: 1.3rem;
+            }
+        }
+        
+        /* Overlay when menu is open */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(188, 19, 254, 0.1) 0%, transparent 50%),
+                linear-gradient(180deg, var(--hack-blue) 0%, #020c1b 100%);
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--matrix-green), transparent);
+            animation: scanline 3s linear infinite;
+        }
+        
+        @keyframes scanline {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+        
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+        
+        .hero h2 span {
+            color: var(--matrix-green);
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: #aaa;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--cyber-green), var(--matrix-green));
+            color: var(--hack-blue);
+            padding: 14px 35px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 255, 136, 0.4);
+        }
+        
+        .countdown {
+            margin-top: 40px;
+            font-family: 'Share Tech Mono', monospace;
+        }
+        
+        .countdown-box {
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 12px;
+            margin: 0 8px;
+            border: 1px solid var(--matrix-green);
+            min-width: 70px;
+        }
+        
+        /* ===== COURSE SECTIONS ===== */
+        section {
+            padding: 70px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            display: inline-block;
+            padding-bottom: 12px;
+            position: relative;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--matrix-green);
+        }
+        
+        /* ===== COURSE DETAILS ===== */
+        .course-details {
+            background: var(--terminal-gray);
+            border-radius: 10px;
+            padding: 35px;
+            margin-bottom: 35px;
+            border: 1px solid #333;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* ===== ABOUT US / INSTRUCTOR STYLES ===== */
+        .instructor-card {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            background: var(--terminal-gray);
+            border-radius: 15px;
+            padding: 35px;
+            border: 1px solid #333;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .instructor-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--cyber-green), var(--neon-purple), var(--cyber-green));
+        }
+        
+        .instructor-photo {
+            position: relative;
+            text-align: center;
+        }
+        
+        #instructor-img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--hack-blue);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        #instructor-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px rgba(0, 255, 136, 0.5);
+        }
+        
+        .photo-frame {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px solid var(--matrix-green);
+            border-radius: 50%;
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .online-status {
+            background: rgba(10, 25, 47, 0.9);
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            border: 1px solid var(--matrix-green);
+        }
+        
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--cyber-green);
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+        
+        .instructor-name {
+            font-size: 2.2rem;
+            color: var(--cyber-green);
+            margin-bottom: 5px;
+        }
+        
+        .instructor-title {
+            color: var(--neon-purple);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        
+        .instructor-bio {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid var(--neon-purple);
+            margin-bottom: 25px;
+        }
+        
+        .expertise-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .tag {
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--cyber-green);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+        
+        .stat-number {
+            font-size: 1.6rem;
+            color: var(--matrix-green);
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+        
+        /* Profile Links */
+        .profile-links {
+            margin: 25px 0;
+            padding: 20px;
+            background: rgba(10, 25, 47, 0.5);
+            border-radius: 10px;
+            border: 1px solid #333;
+        }
+        
+        .profile-links h4 {
+            color: var(--cyber-green);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .social-profiles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+        }
+        
+        .profile-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        
+        .profile-link:hover {
+            transform: translateY(-3px);
+            border-color: var(--cyber-green);
+            background: rgba(0, 255, 136, 0.1);
+        }
+        
+        .profile-link i {
+            font-size: 1.1rem;
+        }
+        
+        /* Specific colors for each platform */
+        .linkedin i { color: #0077b5; }
+        .github i { color: #ffffff; }
+        .twitter i { color: #1da1f2; }
+        .instagram i { color: #e4405f; }
+        .youtube i { color: #ff0000; }
+        .website i { color: var(--matrix-green); }
+        
+        .contact-cta {
+            background: linear-gradient(135deg, rgba(10, 25, 47, 0.8), rgba(0, 40, 85, 0.8));
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid var(--matrix-green);
+            text-align: center;
+            margin-top: 15px;
+        }
+        
+        .cta-button-small {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--neon-purple), #9d00ff);
+            color: white;
+            padding: 10px 25px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button-small:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(188, 19, 254, 0.4);
+        }
+        
+        /* ===== TIMELINE ===== */
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background: var(--matrix-green);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1.5px;
+        }
+        
+        .timeline-item {
+            padding: 10px 35px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background: var(--terminal-gray);
+            border-radius: 10px;
+            border-left: 4px solid var(--cyber-green);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .day-badge {
+            background: var(--neon-purple);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+            position: absolute;
+            top: 15px;
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(odd) .day-badge {
+            right: -60px;
+        }
+        
+        .timeline-item:nth-child(even) .day-badge {
+            left: -60px;
+        }
+        
+        /* ===== SCHEDULE LIST STYLES ===== */
+        .schedule-list {
+            list-style: none;
+            margin: 12px 0;
+            padding: 0;
+        }
+        
+        .schedule-list li {
+            padding: 8px 0;
+            padding-left: 28px;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .schedule-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .schedule-list li i {
+            color: var(--cyber-green);
+            position: absolute;
+            left: 0;
+            top: 10px;
+        }
+        
+        .tools-used {
+            margin-top: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        
+        .tool-tag {
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--cyber-green);
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-family: 'Share Tech Mono', monospace;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+        }
+        
+        .bonus-tag {
+            background: linear-gradient(45deg, var(--neon-purple), rgba(188, 19, 254, 0.2));
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin: 12px 0;
+            border: 1px solid var(--neon-purple);
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .bonus-tag i {
+            color: #ffd700;
+        }
+        
+        /* ===== FEATURES ===== */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            background: var(--terminal-gray);
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            border-color: var(--matrix-green);
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2.2rem;
+            color: var(--cyber-green);
+            margin-bottom: 15px;
+        }
+        
+        /* ===== SYLLABUS TABLE ===== */
+        .syllabus-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+            background: var(--terminal-gray);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .syllabus-table th {
+            background: linear-gradient(45deg, var(--hack-blue), #020c1b);
+            color: var(--cyber-green);
+            padding: 18px;
+            text-align: left;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            border-bottom: 2px solid var(--matrix-green);
+        }
+        
+        .syllabus-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .syllabus-table tr:hover {
+            background: rgba(0, 255, 136, 0.05);
+        }
+        
+        /* ===== BONUSES & TOOLS STYLES ===== */
+        .bonuses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+            gap: 35px;
+            margin-top: 35px;
+        }
+        
+        .bonus-card {
+            background: rgba(15, 20, 31, 0.8);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid var(--matrix-green);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
+        }
+        
+        .bonus-icon {
+            font-size: 2.2rem;
+            color: var(--neon-purple);
+            margin-bottom: 15px;
+        }
+        
+        .bonus-list {
+            list-style: none;
+            margin: 15px 0;
+            padding: 0;
+        }
+        
+        .bonus-list li {
+            padding: 8px 0;
+            padding-left: 32px;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .bonus-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .bonus-list li i {
+            color: var(--cyber-green);
+            position: absolute;
+            left: 0;
+            top: 10px;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .tool-item {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            padding: 12px 8px;
+            text-align: center;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .tool-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--cyber-green);
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.2);
+        }
+        
+        .tool-icon {
+            font-size: 1.6rem;
+            color: var(--cyber-green);
+            margin-bottom: 8px;
+        }
+        
+        .tool-name {
+            font-weight: bold;
+            font-size: 0.85rem;
+            margin-bottom: 4px;
+        }
+        
+        .tool-desc {
+            font-size: 0.75rem;
+            color: #aaa;
+        }
+        
+        /* ===== REGISTRATION ===== */
+        .registration-box {
+            background: linear-gradient(135deg, var(--hack-blue) 0%, #020c1b 100%);
+            border: 2px solid var(--matrix-green);
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            margin-top: 40px;
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
+        }
+        
+        .registration-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--cyber-green);
+        }
+        
+        .form-button {
+            background: linear-gradient(45deg, var(--neon-purple), #9d00ff);
+            color: white;
+            padding: 12px 35px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+        
+        .form-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(188, 19, 254, 0.4);
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            background: #020c1b;
+            padding: 40px 0 15px;
+            border-top: 2px solid var(--matrix-green);
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 15px;
+            border-top: 1px solid #333;
+            color: #777;
+            font-size: 0.85rem;
+        }
+        
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1200px) {
+            .instructor-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .instructor-photo {
+                margin-bottom: 25px;
+            }
+            
+            .bonuses-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 60px;
+                padding-right: 20px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item:nth-child(odd) .day-badge,
+            .timeline-item:nth-child(even) .day-badge {
+                left: 15px;
+                right: auto;
+            }
+            
+            .registration-box {
+                padding: 25px 15px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .social-profiles {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            
+            .expertise-tags {
+                justify-content: center;
+            }
+            
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .bonuses-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .bonus-card {
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h2 {
+                font-size: 1.6rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+            
+            .social-profiles {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-content {
+                padding: 15px;
+            }
+            
+            .syllabus-table {
+                font-size: 0.85rem;
+            }
+            
+            .syllabus-table th,
+            .syllabus-table td {
+                padding: 10px;
+            }
+            
+            .instructor-card {
+                padding: 25px;
+            }
+            
+            .instructor-name {
+                font-size: 1.8rem;
+            }
+            
+            #instructor-img {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .course-details {
+                padding: 25px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .countdown-box {
+                min-width: 60px;
+                padding: 10px;
+                margin: 0 5px;
+            }
+            
+            section {
+                padding: 50px 0;
+            }
+            
+            /* Keep "Hackshastra 1.0" visible - already adjusted in media query above */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header - Compact Version with Always Visible Name -->
+    <header>
+        <div class="container">
+            <div class="header-compact">
+                <div class="logo-compact">
+                    <div class="logo-icon">
+                        <i class="fas fa-terminal"></i>
+                    </div>
+                    <div class="logo-text-compact">
+                        <h1>HACKSHASTRA 1.0</h1>
+                        <span class="tagline">ETHICAL HACKING BOOTCAMP</span>
+                    </div>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <!-- Compact Navigation -->
+                <nav class="main-nav-compact" id="mainNav">
+                    <div class="nav-scroll-container">
+                        <a href="#overview" class="nav-item">
+                            <i class="fas fa-home"></i>
+                            <span>Overview</span>
+                        </a>
+                        <a href="#about" class="nav-item">
+                            <i class="fas fa-user"></i>
+                            <span>Instructor</span>
+                        </a>
+                        <a href="#schedule" class="nav-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Schedule</span>
+                        </a>
+                        <a href="#syllabus" class="nav-item">
+                            <i class="fas fa-book"></i>
+                            <span>Syllabus</span>
+                        </a>
+                        <a href="#bonuses" class="nav-item">
+                            <i class="fas fa-gift"></i>
+                            <span>Bonuses</span>
+                        </a>
+                        <a href="#register" class="nav-item nav-cta-compact">
+                            <i class="fas fa-user-plus"></i>
+                            <span>Register</span>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Master <span class="glow">Ethical Hacking</span> in 10 Days</h2>
+            <p>Join our intensive hands-on course designed for beginners. Learn cybersecurity fundamentals, penetration testing, and ethical hacking techniques from industry experts.</p>
+            
+            <a href="#register" class="cta-button">
+                <i class="fas fa-user-secret"></i> ENROLL NOW
+            </a>
+            
+       <div class="date-glow-box">
+    <div class="date-glow-label">BATCH STARTING</div>
+    <div class="date-glow-main">20 JANUARY 2026</div>
+    <div class="date-glow-sub">✦ Limited Seats ✦</div>
+</div>
+    </div>
+</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Overview -->
+    <section id="overview">
+        <div class="container">
+            <div class="section-title">
+                <h2>Course <span class="glow">Overview</span></h2>
+            </div>
+            
+            <div class="course-details">
+                <h3><i class="fas fa-crosshairs"></i> What is Hackshastra 1.0?</h3>
+                <p>Hackshastra 1.0 is a comprehensive 10-day program designed to introduce students to the world of ethical hacking and cybersecurity. This course provides hands-on experience with real-world tools and techniques used by security professionals.</p>
+                
+                <div style="margin: 25px 0;">
+                    <h4><i class="fas fa-bullseye"></i> Course Objectives</h4>
+                    <ul style="margin-left: 20px; margin-top: 12px;">
+                        <li>Understand cybersecurity fundamentals</li>
+                        <li>Learn penetration testing methodologies</li>
+                        <li>Master essential hacking tools (Termux, Nmap, Zphisher, Hydra)</li>
+                        <li>Practice ethical hacking using Android phone</li>
+                        <li>Prepare for cybersecurity certifications</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us / Instructor -->
+    <section id="about" style="background: rgba(10, 25, 47, 0.7);">
+        <div class="container">
+            <div class="section-title">
+                <h2>About <span class="glow">Instructor</span></h2>
+            </div>
+            
+            <div class="instructor-card">
+                <div class="instructor-photo">
+                    <!-- Replace with your photo URL -->
+   <img src="https://i.ibb.co/5hKfCZxw/IMG-20251216-123632.jpg" alt="Your Name - Hackshastra Instructor" id="instructor-img">
+                    <div class="photo-frame"></div>
+                    <div class="online-status">
+                        <span class="status-dot"></span>
+                        <span>Available for Queries</span>
+                    </div>
+                </div>
+                
+                <div class="instructor-details">
+                    <h3 class="instructor-name">Mr.pr.0xy⚡</h3>
+                    <p class="instructor-title">Cybersecurity Expert & Ethical Hacker</p>
+                    
+                    <div class="instructor-bio">
+                        <p><i class="fas fa-quote-left" style="color: var(--neon-purple);"></i> Hackshastra was born from a simple realization: cybersecurity education shouldn't be expensive or intimidating. Through our 10-day intensive program, I've witnessed complete beginners build professional-grade hacking skills, land internships, and even start freelance security testing.
+
+My teaching philosophy combines technical rigor with empathetic guidance, recognizing that every student's learning journey is unique. Join me in making cybersecurity education inclusive and practical for all."
+</p>
+                        
+                        <div class="expertise-tags">
+                            <span class="tag">Penetration Testing</span>
+                            <span class="tag">Network Security</span>
+                            <span class="tag">Android Hacking</span>
+                            <span class="tag">Bug Bounty</span>
+                            <span class="tag">Security Auditing</span>
+                        </div>
+                        
+                 
+                        </div>
+                    </div>
+                    
+                    <!-- Profile Links -->
+                    <div class="profile-links">
+                        <h4><i class="fas fa-external-link-alt"></i> Connect With Me</h4>
+                        <div class="social-profiles">
+        
+                            <a href="https://www.instagram.com/pr.0xy?igsh=MWloY3BvanI0dmRrZA==" class="profile-link instagram" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                                <span>Instagram</span>
+                            </a>
+                            <a href="https://youtube.com/@itspruthvicreation7520" class="profile-link youtube" target="_blank">
+                                <i class="fab fa-youtube"></i>
+                                <span>YouTube</span>
+                            </a>
+                            <a href="https://wa.me/message/YG7IVBZ2W4OUK1" class="profile-link WhatsApp" target="_blank">
+                                <i class="fas fa-globe"></i>
+                                <span>WhatsApp</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-cta">
+                        <p><i class="fas fa-envelope"></i> Have questions? Email me: <strong>@hackerpruthvi.01@gmail.com</strong></p>
+                        <a href="#register" class="cta-button-small">
+                            <i class="fas fa-comments"></i> Ask About Course
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10-Day Schedule -->
+    <section id="schedule" style="background: rgba(0, 0, 0, 0.3);">
+        <div class="container">
+            <div class="section-title">
+                <h2>10-Day <span class="glow-purple">Schedule</span></h2>
+                <p style="color: #aaa; margin-top: 12px;">Complete hands-on learning with practical demonstrations</p>
+            </div>
+            
+            <div class="timeline">
+                <!-- Day 1 -->
+                <div class="timeline-item">
+                    <div class="day-badge">DAY 1</div>
+                    <div class="timeline-content">
+                        <h3><i class="fas fa-user-secret"></i> Introduction to Ethical Hacking</h3>
+                        <ul class="schedule-list">
+                            <li><i class="fas fa-check-circle"></i> What is Ethical Hacking?</li>
+                            <li><i class="fas fa-check-circle"></i> Types of Hackers (White/Grey/Black Hat)</li>
+                            <li><i class="fas fa-check-circle"></i> Devices used for hacking</li>
+                            <li><i class="fas fa-check-circle"></i> Tools needed (Android Phone, Termux, F-Droid, Hacker's Keyboard)</li>
+                        </ul>
+                        <div class="tools-used">
+                            <span class="tool-tag">Theory</span>
+                            <span class="tool-tag">Foundation</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Day 2 -->
+                <div class="timeline-item">
+                    <div class="day-badge">DAY 2</div>
+                    <div class="timeline-content">
+                        <h3><i class="fas fa-mobile-alt"></i> Setting Up Your Android Phone</h3>
+                        <ul class="schedule-list">
+                            <li><i class="fas fa-check-circle"></i> Install Termux & F-Droid</li>
+                            <li><i class="fas fa-check-circle"></i> Hacker's Keyboard setup</li>
+                            <li><i class="fas fa-check-circle"></i> Update & upgrade packages</li>
+                            <li><i class="fas fa-check-circle"></i> Install Linux packages (git, wget, curl, python, nano, etc.)</li>
+                        </ul>
+                        <div class="bonus-tag">
+                            <i class="fas fa-gift"></i> Bonus: Termux customisation using T-header tool
+                        </div>
+                        <div class="tools-used">
+                            <span class="tool-tag">Termux</span>
+                            <span class="tool-tag">F-Droid</span>
+                            <span class="tool-tag">T-header</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Day 3 -->
+                <div class="timeline-item">
+                    <div class="day-badge">DAY 3</div>
+                    <div class="timeline-content">
+                        <h3><i class="fas fa-network-wired"></i> Network Scanning & Information Gathering</h3>
+                        <ul class="schedule-list">
+                            <li><i class="fas fa-check-circle"></i> Install & use nmap in Termux</li>
+                            <li><i class="fas fa-check-circle"></i> Network Discovery using ping, whois, dnsenum</li>
+                            <li><i class="fas fa-check-circle"></i> Scan your WiFi and nearby devices</li>
+                            <li><i class="fas fa-check-circle"></i> Network sniffing using http canary (No root)</li>
+                        </ul>
+                        <div class="tools-used">
+                            <span class="tool-tag">Nmap</span>
+                            <span class="tool-tag">Ping</span>
+                            <span class="tool-tag">Whois</span>
+                            <span class="tool-tag">DNSenum</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Day 4 -->
+                <div class="timeline-item">
+                    <div class="day-badge">DAY 4</div>
+                    <div class="timeline-content">
+                        <h3><i class="fas fa-globe"></i> Website Recon & Vulnerability Scanning</h3>
+                        <ul class="schedule-list">
+                            <li><i class="fas fa-check-circle"></i> Install & use tools like sqlmap, WPSCAN (WordPress), Nikto</li>
+                            <li><i class="fas fa-check-circle"></i> Discover vulnerabilities in test sites</li>
+                        </ul>
+                        <div class="tools-used">
+                            <span class="tool-tag">SQLMap</span>
+                            <span class="tool-tag">WPSCAN</span>
+                            <span class="tool-tag">Nikto</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Day 5 -->
+                <div class="timeline-item">
+                    <div class="day-badge">DAY 5</div>
+                    <div class="timeline-content">
+                        <h3><i class="fas fa-users"></i> Social Media Hacking Awareness + Phishing Intro</h3>
+                        <ul class="schedule-list">
+                            <li><i class="fas fa-check-circle"></i> What is Social Engineering?</li>
+                            <li><i class="fas fa-check-circle"></i> Real cases of social media account takeovers</li>
+                            <li><i class="fas fa-check-circle"></i> Introduction to phishing: How it works</li>
+                        </ul>
+                        <div class="tools-used">
+                            <span class="tool-tag">Social Engineering</span>
+                            <span class="tool-tag">Phishing Theory</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Day 6 -->
+                <div class="timeline-item">
+                    <div class="day-badge">DAY 6</div>
+                    <div class="timeline-content">
+                        <h3><i class="fas fa-fish"></i> Practical Phishing using Android</h3>
+                        <ul class="schedule-list">
+                            <li><i class="fas fa-check-circle"></i> Tool: Zphisher or HiddenEye in Termux</li>
+                            <li><i class="fas fa-check-circle"></i> Facebook, Instagram, Gmail phishing pages</li>
+                            <li><i class="fas fa-check-circle"></i> Tunneling with Ngrok or Serveo</li>
+                            <li><i class="fas fa-check-circle"></i> Collecting credentials (demo only, on your own form)</li>
+                        </ul>
+                        <div class="tools-used">
+                            <span class="tool-tag">Zphisher</span>
+                            <span class="tool-tag">HiddenEye</span>
+                            <span class="tool-tag">Ngrok</span>
+                            <span class="tool-tag">Serveo</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Day 7 -->
+                <div class="timeline-item">
+                    <div class="day-badge">DAY 7</div>
+                    <div class="timeline-content">
+                        <h3><i class="fas fa-key"></i> Password Cracking Basics</h3>
+                        <ul class="schedule-list">
+                            <li><i class="fas fa-check-circle"></i> Wordlist attacks using Hydra</li>
+                            <li><i class="fas fa-check-circle"></i> Bruteforce demo (on your own login pages)</li>
+                            <li><i class="fas fa-check-circle"></i> Tools: Crunch, Hydra, Cupp</li>
+                        </ul>
+                        <div class="tools-used">
+                            <span class="tool-tag">Hydra</span>
+                            <span class="tool-tag">Crunch</span>
+                            <span class="tool-tag">Cupp</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Day 8 -->
+                <div class="timeline-item">
+                    <div class="day-badge">DAY 8</div>
+                    <div class="timeline-content">
+                        <h3><i class="fas fa-robot"></i> Android Hacking Tools Overview</h3>
+                        <ul class="schedule-list">
+                            <li><i class="fas fa-check-circle"></i> NetHunter Lite vs Full</li>
+                            <li><i class="fas fa-check-circle"></i> Toolkits like AndroRAT (Remote Access)</li>
+                            <li><i class="fas fa-check-circle"></i> Spy apps (for awareness & countermeasures)</li>
+                        </ul>
+                        <div class="tools-used">
+                            <span class="tool-tag">NetHunter</span>
+                            <span class="tool-tag">AndroRAT</span>
+                            <span class="tool-tag">Android Tools</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Day 9 -->
+                <div class="timeline-item">
+                    <div class="day-badge">DAY 9</div>
+                    <div class="timeline-content">
+                        <h3><i class="fas fa-shield-alt"></i> Protection Techniques & Anonymous Browsing</h3>
+                        <ul class="schedule-list">
+                            <li><i class="fas fa-check-circle"></i> Use of VPN, Tor, ProxyChains on Android</li>
+                            <li><i class="fas fa-check-circle"></i> Encrypting data</li>
+                            <li><i class="fas fa-check-circle"></i> Detecting phishing, malware links</li>
+                        </ul>
+                        <div class="tools-used">
+                            <span class="tool-tag">VPN</span>
+                            <span class="tool-tag">Tor</span>
+                            <span class="tool-tag">ProxyChains</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Day 10 -->
+                <div class="timeline-item">
+                    <div class="day-badge">DAY 10</div>
+                    <div class="timeline-content">
+                        <h3><i class="fas fa-graduation-cap"></i> Final Project + Certification</h3>
+                        <ul class="schedule-list">
+                            <li><i class="fas fa-check-circle"></i> Task: Scan your WiFi + Test phishing page + Detect vulnerability on demo site</li>
+                            <li><i class="fas fa-check-circle"></i> Submit findings in PDF</li>
+                            <li><i class="fas fa-check-circle"></i> PDF certificate (custom-designed)</li>
+                        </ul>
+                        <div class="bonus-tag">
+                            <i class="fas fa-gift"></i> Project-Based Learning
+                        </div>
+                        <div class="tools-used">
+                            <span class="tool-tag">All Tools</span>
+                            <span class="tool-tag">Project</span>
+                            <span class="tool-tag">Certificate</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Syllabus -->
+    <section id="syllabus">
+        <div class="container">
+            <div class="section-title">
+                <h2>Detailed <span class="glow-purple">Syllabus</span></h2>
+                <p style="color: #aaa; margin-top: 10px;">Complete breakdown of each day's learning objectives</p>
+            </div>
+            
+            <table class="syllabus-table">
+                <thead>
+                    <tr>
+                        <th width="10%">Day</th>
+                        <th width="50%">Topics Covered</th>
+                        <th width="40%">Tools & Technologies</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="terminal-font">Day 1</td>
+                        <td>
+                            <strong>Introduction to Ethical Hacking</strong><br>
+                            • What is Ethical Hacking?<br>
+                            • Types of Hackers (White/Grey/Black Hat)<br>
+                            • Devices used for hacking<br>
+                            • Required tools setup
+                        </td>
+                        <td>Android Phone, Termux, F-Droid, Hacker's Keyboard</td>
+                    </tr>
+                    <tr>
+                        <td class="terminal-font">Day 2</td>
+                        <td>
+                            <strong>Setting Up Your Android Phone</strong><br>
+                            • Termux & F-Droid installation<br>
+                            • Hacker's Keyboard setup<br>
+                            • Package updates & upgrades<br>
+                            • Linux packages installation<br>
+                            • <em>Bonus: Termux customization</em>
+                        </td>
+                        <td>Termux, F-Droid, git, wget, curl, python, nano, T-header</td>
+                    </tr>
+                    <tr>
+                        <td class="terminal-font">Day 3</td>
+                        <td>
+                            <strong>Network Scanning & Information Gathering</strong><br>
+                            • Network discovery techniques<br>
+                            • WiFi and device scanning<br>
+                            • Network sniffing without root<br>
+                            • Information gathering methods
+                        </td>
+                        <td>Nmap, ping, whois, dnsenum, http canary</td>
+                    </tr>
+                    <tr>
+                        <td class="terminal-font">Day 4</td>
+                        <td>
+                            <strong>Website Recon & Vulnerability Scanning</strong><br>
+                            • Website reconnaissance<br>
+                            • Vulnerability discovery<br>
+                            • Security scanning techniques<br>
+                            • Test site analysis
+                        </td>
+                        <td>SQLMap, WPSCAN, Nikto, vulnerability scanners</td>
+                    </tr>
+                    <tr>
+                        <td class="terminal-font">Day 5</td>
+                        <td>
+                            <strong>Social Media Hacking Awareness</strong><br>
+                            • Social Engineering concepts<br>
+                            • Real-world case studies<br>
+                            • Phishing introduction<br>
+                            • Account protection methods
+                        </td>
+                        <td>Social Engineering toolkit, awareness tools</td>
+                    </tr>
+                    <tr>
+                        <td class="terminal-font">Day 6</td>
+                        <td>
+                            <strong>Practical Phishing using Android</strong><br>
+                            • Phishing page creation<br>
+                            • Tunneling techniques<br>
+                            • Credential collection<br>
+                            • Demo implementation
+                        </td>
+                        <td>Zphisher, HiddenEye, Ngrok, Serveo</td>
+                    </tr>
+                    <tr>
+                        <td class="terminal-font">Day 7</td>
+                        <td>
+                            <strong>Password Cracking Basics</strong><br>
+                            • Wordlist attacks<br>
+                            • Bruteforce techniques<br>
+                            • Password generation<br>
+                            • Security testing
+                        </td>
+                        <td>Hydra, Crunch, Cupp, wordlists</td>
+                    </tr>
+                    <tr>
+                        <td class="terminal-font">Day 8</td>
+                        <td>
+                            <strong>Android Hacking Tools Overview</strong><br>
+                            • NetHunter comparison<br>
+                            • Remote access tools<br>
+                            • Spy app awareness<br>
+                            • Countermeasures
+                        </td>
+                        <td>NetHunter, AndroRAT, monitoring tools</td>
+                    </tr>
+                    <tr>
+                        <td class="terminal-font">Day 9</td>
+                        <td>
+                            <strong>Protection & Anonymous Browsing</strong><br>
+                            • VPN setup & usage<br>
+                            • Tor browser implementation<br>
+                            • Data encryption<br>
+                            • Threat detection
+                        </td>
+                        <td>VPN, Tor, ProxyChains, encryption tools</td>
+                    </tr>
+                    <tr>
+                        <td class="terminal-font">Day 10</td>
+                        <td>
+                            <strong>Final Project & Certification</strong><br>
+                            • Comprehensive project work<br>
+                            • Findings documentation<br>
+                            • PDF report creation<br>
+                            • Certificate distribution
+                        </td>
+                        <td>All covered tools, Detailed PDF notes, certificate</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Bonuses & Tools -->
+    <section id="bonuses" style="background: linear-gradient(135deg, rgba(10, 25, 47, 0.8) 0%, rgba(2, 12, 27, 0.9) 100%);">
+        <div class="container">
+            <div class="section-title">
+                <h2><span class="glow">🎁 Bonuses</span> & <span class="glow-purple">🔧 Tools</span></h2>
+            </div>
+            
+            <div class="bonuses-grid">
+                <div class="bonus-card">
+                    <div class="bonus-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h3>Course Bonuses</h3>
+                    <ul class="bonus-list">
+                        <li><i class="fas fa-check"></i> Telegram support group</li>
+                        <li><i class="fas fa-check"></i> PDF Notes + Tool Installation Guides</li>
+                        <li><i class="fas fa-check"></i> Quiz after each day (using Google Forms)</li>
+                        <li><i class="fas fa-check"></i> Certificate of Completion (use Canva)</li>
+                        <li><i class="fas fa-check"></i> Lifetime access to course materials</li>
+                        <li><i class="fas fa-check"></i> 24/7 doubt support</li>
+                    </ul>
+                </div>
+                
+                <div class="bonus-card">
+                    <div class="bonus-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Tools Covered</h3>
+                    <div class="tools-grid">
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-terminal"></i>
+                            </div>
+                            <div class="tool-name">Termux</div>
+                            <div class="tool-desc">Hacking CLI</div>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-fish"></i>
+                            </div>
+                            <div class="tool-name">Zphisher</div>
+                            <div class="tool-desc">Phishing Tool</div>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-satellite-dish"></i>
+                            </div>
+                            <div class="tool-name">Nmap</div>
+                            <div class="tool-desc">Network Scanner</div>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div class="tool-name">SQLMap</div>
+                            <div class="tool-desc">SQL Injection</div>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <div class="tool-name">Ngrok</div>
+                            <div class="tool-desc">Tunneling</div>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-key"></i>
+                            </div>
+                            <div class="tool-name">Hydra</div>
+                            <div class="tool-desc">Password Cracker</div>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-hammer"></i>
+                            </div>
+                            <div class="tool-name">Crunch</div>
+                            <div class="tool-desc">Wordlist Generator</div>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-user-secret"></i>
+                            </div>
+                            <div class="tool-name">Cupp</div>
+                            <div class="tool-desc">Profile Generator</div>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-mask"></i>
+                            </div>
+                            <div class="tool-name">Tor</div>
+                            <div class="tool-desc">Anonymous Browser</div>
+                        </div>
+                        <div class="tool-item">
+                            <div class="tool-icon">
+                                <i class="fas fa-wifi"></i>
+                            </div>
+                            <div class="tool-name">HTTP Canary</div>
+                            <div class="tool-desc">Network Sniffer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration -->
+    <section id="register">
+        <div class="container">
+            <div class="registration-box">
+                <h3><i class="fas fa-user-plus"></i> ENROLL IN HACKSHASTRA 1.0</h3>
+                <p>Limited seats available. Join the next batch of ethical hackers!</p>
+                
+                <div style="margin: 25px 0;">
+                    <p><i class="fas fa-rupee-sign"></i> Course Fee: <strong> 249 </strong></p>
+                    <p><i class="fas fa-calendar-alt"></i> Duration: 10 Days</p>
+                    <p><i class="fas fa-clock"></i> Daily: 1 Hours Session daily at 9 PM</p>
+                    <p><i class="fas fa-mobile-alt"></i> Device: Android Phone Required</p>
+                </div>
+                
+                <a href="https://forms.gle/HkuHfiK23EcHAdDy6" class="cta-button" target="_blank">
+                    <i class="fas fa-edit"></i> REGISTER NOW
+                </a>
+                
+                <p style="margin-top: 15px; color: #aaa; font-size: 0.85rem;">
+                    <i class="fas fa-lock"></i> Registration secured via Google Forms
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h4>HACKSHASTRA 1.0</h4>
+                    <p>Ethical Hacking Course for Beginners</p>
+                    <p style="margin-top: 12px;">
+                        <i class="fas fa-envelope"></i>hackerpruthvi.01@gmail.com <br>
+                        <i class="fas fa-phone"></i> +91 7020789658
+                    </p>
+                </div>
+                
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul style="list-style: none; margin-top: 12px;">
+                        <li><a href="#overview" style="color: #aaa; text-decoration: none;">Course Overview</a></li>
+                        <li><a href="#about" style="color: #aaa; text-decoration: none;">Instructor</a></li>
+                        <li><a href="#schedule" style="color: #aaa; text-decoration: none;">Schedule</a></li>
+                        <li><a href="#syllabus" style="color: #aaa; text-decoration: none;">Syllabus</a></li>
+                        <li><a href="#bonuses" style="color: #aaa; text-decoration: none;">Bonuses</a></li>
+                        <li><a href="#register" style="color: #aaa; text-decoration: none;">Register</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4>Follow Us</h4>
+                    <div style="margin-top: 12px; font-size: 1.3rem;">
+                        <a href="https://t.me/Pruthvirajmagar" style="color: var(--cyber-green); margin-right: 12px;"><i class="fab fa-telegram"></i></a>
+                        <a href="https://wa.me/message/YG7IVBZ2W4OUK1" style="color: var(--cyber-green); margin-right: 12px;"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://youtube.com/@itspruthvicreation7520" style="color: var(--cyber-green); margin-right: 12px;"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2024 Hackshastra 1.0. Designed for Educational Purpose Only. Ethical Hacking for Learning.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+     
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+        const body = document.body;
+        
+        menuToggle.addEventListener('click', function() {
+            mainNav.classList.toggle('active');
+            
+            // Create overlay
+            let overlay = document.querySelector('.menu-overlay');
+            if (!overlay) {
+                overlay = document.createElement('div');
+                overlay.className = 'menu-overlay';
+                document.body.appendChild(overlay);
+            }
+            
+            overlay.classList.toggle('active');
+            
+            // Change icon
+            const icon = menuToggle.querySelector('i');
+            if (mainNav.classList.contains('active')) {
+                icon.className = 'fas fa-times';
+                body.style.overflow = 'hidden';
+            } else {
+                icon.className = 'fas fa-bars';
+                body.style.overflow = 'auto';
+            }
+            
+            // Close menu when clicking overlay
+            overlay.addEventListener('click', function() {
+                mainNav.classList.remove('active');
+                overlay.classList.remove('active');
+                icon.className = 'fas fa-bars';
+                body.style.overflow = 'auto';
+            });
+        });
+        
+        // Close menu when clicking nav items (mobile)
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                if (window.innerWidth < 992) {
+                    mainNav.classList.remove('active');
+                    document.querySelector('.menu-overlay')?.classList.remove('active');
+                    menuToggle.querySelector('i').className = 'fas fa-bars';
+                    body.style.overflow = 'auto';
+                }
+            });
+        });
+        
+        // Close menu on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                mainNav.classList.remove('active');
+                document.querySelector('.menu-overlay')?.classList.remove('active');
+                menuToggle.querySelector('i').className = 'fas fa-bars';
+                body.style.overflow = 'auto';
+            }
+        });
+        
+        // Add active class to nav links on scroll
+        window.addEventListener('scroll', function() {
+            let sections = document.querySelectorAll('section');
+            let navLinks = document.querySelectorAll('.nav-item');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
